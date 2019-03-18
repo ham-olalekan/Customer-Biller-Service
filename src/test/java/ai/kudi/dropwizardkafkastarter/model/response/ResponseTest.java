@@ -17,7 +17,7 @@ public class ResponseTest {
 
     @Test
     public void serializesToJSON() throws Exception {
-        final Response response = new Response("Deposit not found.");
+        final Response response = new Response("Response not found.");
 
         final String expected = MAPPER.writeValueAsString(
                 MAPPER.readValue(FixtureHelpers.fixture("fixtures/response.json"), Response.class));
