@@ -27,7 +27,7 @@ public class ResponseTest {
 
     @Test
     public void deserializesFromJSON() throws Exception {
-        final Response response = new Response("Deposit not found.");
+        final Response response = new Response("Response not found.");
 
         Assert.assertEquals(MAPPER.readValue(FixtureHelpers.fixture("fixtures/response.json"), Response.class), response);
     }
