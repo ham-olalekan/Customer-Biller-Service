@@ -1,6 +1,6 @@
 # dropwizard-kafka-starter
 
-This is a starter almost ready dropwizard application with some key add-ons.
+This is an almost ready dropwizard application with some key add-ons.
 
 - MognoDB
 - Redis
