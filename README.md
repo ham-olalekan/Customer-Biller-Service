@@ -1,6 +1,6 @@
 # dropwizard-kafka-starter
 
-This is a starter almost ready dropwizard application with some key add-ons.
+This is an almost ready dropwizard application with some key add-ons.
 
 - MognoDB
 - Redis
@@ -14,8 +14,8 @@ Just clone the repo and get on with your work
 ### Prerequisites
 
 - Make sure you have Intellij IDE
-- Have Gradle setup
-- Have Redis, Kafka, and MongoDB installed locally
+- Setup Gradle
+- Setup Redis, Kafka, and MongoDB servers locally
 
 ## Running the tests
 
