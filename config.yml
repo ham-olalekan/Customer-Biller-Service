@@ -1,0 +1,42 @@
+server:
+  maxThreads: 512
+  applicationConnectors:
+    - type: http
+      port: 8080
+  adminConnectors:
+    - type: http
+      port: 8081
+
+jerseyClient:
+  gzipEnabled: false
+  gzipEnabledForRequests: false
+  chunkedEncodingEnabled: false
+  timeout: 30000ms
+
+logging:
+  level: INFO
+  loggers:
+    com.demo: DEBUG
+
+mongodbUri: ${MONGODB_URI}
+
+kafka:
+  bootstrapServers:
+    - ${KAFKA_HOST}:${KAFKA_PORT}
+  groupId: wallet-deposit
+
+swagger:
+  basePath: /wallet-deposit-service
+  resourcePackage: ai.kudi.dropwizardkafkastarter.api
+  scan: true
+  info:
+    version: "1.0.0"
+    title: "Starter App"
+    description: ""
+    termsOfService: "http://swagger.io/terms/"
+    contact:
+      name: "Starter App"
+    license:
+      name: ""
+
+redis: ${REDIS_URI}

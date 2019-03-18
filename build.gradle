@@ -1,0 +1,103 @@
+buildscript {
+
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.4'
+    }
+}
+
+plugins {
+    id 'java'
+    id 'application'
+    // shadow jar plugin
+    id 'com.github.johnrengelman.shadow' version '4.0.1'
+    id 'com.jfrog.artifactory' version '4.7.5'
+}
+
+repositories {
+    mavenCentral()
+}
+
+group 'ai.kudi.depositservice'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+artifactory {
+    contextUrl = "${artifactory_contextUrl}"   //The base Artifactory URL if not overridden by the publisher/resolver
+    publish {
+        repository {
+            repoKey = 'gradle-dev-local'
+            username = "${artifactory_user}"
+            password = "${artifactory_password}"
+            maven = true
+
+        }
+        defaults {
+            publications('mavenJava')
+            publishArtifacts = true
+            publishPom = true
+        }
+    } 
+    resolve {
+        repository {
+            repoKey = 'gradle-dev'
+            username = "${artifactory_user}"
+            password = "${artifactory_password}"
+            maven = true
+
+        }
+    }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'io.dropwizard:dropwizard-core:1.3.8'
+    compile 'io.dropwizard:dropwizard-client:1.3.8'
+    compile 'org.mongodb:mongodb-driver-sync:3.8.2'
+    compile 'com.smoketurner:dropwizard-swagger:1.0.6-1'
+    compile 'io.dropwizard:dropwizard-testing:1.3.8'
+    compile 'org.mockito:mockito-core:2.23.4'
+    compile group: 'org.parboiled', name: 'parboiled-java', version: '1.0.2'
+    compile group: 'redis.clients', name: 'jedis', version: '3.0.1'
+    compile 'ai.kudi:beowulf:5.1.3'
+    compile 'ai.kudi.walletservice:client:1.0.0-rc5'
+}
+
+// Define the main class for the application
+mainClassName = 'ai.kudi.dropwizardkafkastarter.WalletDepositServiceApplication'
+
+// enable named parameters option (for use with jackson java8 modules)
+compileJava {
+    options.compilerArgs << '-parameters'
+}
+
+shadowJar {
+    mergeServiceFiles()
+}
+
+task stage(dependsOn: ['build', 'clean'])
+build.mustRunAfter clean
+
+task resolveDependencies {
+    setDescription "Resolves all projects dependencies from the repository."
+    setGroup "Build Server"
+    doLast {
+        rootProject.allprojects { project ->
+            project.buildscript.configurations.forEach { configuration ->
+                if (configuration.canBeResolved) {
+                    configuration.resolve()
+                }
+            }
+            project.configurations.forEach { configuration ->
+                if (configuration.canBeResolved) {
+                    configuration.resolve()
+                }
+            }
+        }
+    }
+}
