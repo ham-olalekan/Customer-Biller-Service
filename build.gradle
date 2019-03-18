@@ -21,7 +21,7 @@ repositories {
     mavenCentral()
 }
 
-group 'ai.kudi.depositservice'
+group 'ai.kudi.dropwizardkafkastarter'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
@@ -69,7 +69,7 @@ dependencies {
 }
 
 // Define the main class for the application
-mainClassName = 'ai.kudi.dropwizardkafkastarter.WalletDepositServiceApplication'
+mainClassName = 'ai.kudi.dropwizardkafkastarter.StarterServiceApplication'
 
 // enable named parameters option (for use with jackson java8 modules)
 compileJava {
