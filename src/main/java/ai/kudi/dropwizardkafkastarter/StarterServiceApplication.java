@@ -100,7 +100,8 @@ public class StarterServiceApplication extends Application<StarterServiceConfigu
         environment.lifecycle().manage(kafkaManaged);
         environment.healthChecks().register(
             "StarterServiceHealthCheck",
-            new StarterServiceHealthCheck(mongoDBManagerConn.getClient()));
+            new StarterServiceHealthCheck(mongoDBManagerConn.getClient()
+                .getDatabase(mongoDBManagerConn.getServers().getDatabase())));
     }
 
 }

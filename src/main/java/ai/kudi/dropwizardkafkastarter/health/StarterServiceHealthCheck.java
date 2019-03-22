@@ -2,6 +2,7 @@ package ai.kudi.dropwizardkafkastarter.health;
 
 import com.codahale.metrics.health.HealthCheck;
 import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
 /**
@@ -12,23 +13,23 @@ import org.bson.Document;
 public class StarterServiceHealthCheck extends HealthCheck {
 
     /**
-     * A client of MongoDB.
+     * MongoDatabase.
      */
-    private MongoClient mongoClient;
+    private MongoDatabase mongoDatabase;
 
     /**
      * Constructor.
      *
-     * @param mongoClient the mongo client.
+     * @param mongoDatabase
      */
-    public StarterServiceHealthCheck(final MongoClient mongoClient) {
-        this.mongoClient = mongoClient;
+    public StarterServiceHealthCheck(final MongoDatabase mongoDatabase) {
+        this.mongoDatabase = mongoDatabase;
     }
 
     @Override
     protected Result check() {
         try {
-            final Document document = mongoClient.getDatabase("starter-db").runCommand(new Document("buildInfo", 1));
+            final Document document = mongoDatabase.runCommand(new Document("buildInfo", 1));
             if (document == null) {
                 return Result.unhealthy("Can not perform operation buildInfo in Database.");
             }
