@@ -2,7 +2,7 @@
 
 This is an almost ready dropwizard application with some key add-ons.
 
-- MognoDB
+- MongoDB
 - Redis
 - Kafka
 - swagger
