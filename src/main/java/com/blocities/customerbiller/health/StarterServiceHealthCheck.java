@@ -1,4 +1,4 @@
-package ai.kudi.dropwizardkafkastarter.health;
+package com.blocities.customerbiller.health;
 
 import com.codahale.metrics.health.HealthCheck;
 import com.mongodb.client.MongoClient;
@@ -8,7 +8,7 @@ import org.bson.Document;
 /**
  * Health Check.
  *
- * @author Abayomi Popoola
+ * @author Lukman Olalekan
  */
 public class StarterServiceHealthCheck extends HealthCheck {
 

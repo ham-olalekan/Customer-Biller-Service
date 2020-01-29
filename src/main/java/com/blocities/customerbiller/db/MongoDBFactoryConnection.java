@@ -1,4 +1,4 @@
-package ai.kudi.dropwizardkafkastarter.db;
+package com.blocities.customerbiller.db;
 
 import com.mongodb.ConnectionString;
 import com.mongodb.client.MongoClient;
@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  *
- * @author Abayomi Popoola
+ * @author Lukman Olalekan
  */
 public class MongoDBFactoryConnection {
 

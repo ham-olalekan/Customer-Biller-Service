@@ -23,11 +23,8 @@ gradle-app.setting
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
-kudi_core_env.sh
 running.pid
 nohup.out
-kudi_core_prod_env.sh
-kudi_core_staging_env.sh
 helper.sh
 .env
 env.txt
@@ -95,20 +92,11 @@ crashlytics-build.properties
 hs_err_pid*
 
 
-/src/main/java/com/kudi/labs/
-
-/src/main/java/com/kudi/core/services/billing/BillingServiceDemo.javawallwer
-
 *.rdb
 /bin/
 
-#Slack Team Controller for debugging only
-/src/main/java/com/kudi/api/controllers/TestController.java
-
 env.txt
 helper.sh
-src/main/java/com/kudi/api/resources/RequestModel.java
-src/main/java/com/kudi/api/resources/PaymentServiceResponseModel.java
 gradle.properties
 
 AuthenticationControllerTest.groovy

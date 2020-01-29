@@ -1,4 +1,4 @@
-package ai.kudi.dropwizardkafkastarter.db;
+package com.blocities.customerbiller.db;
 
 import com.mongodb.client.MongoClient;
 import io.dropwizard.lifecycle.Managed;
@@ -6,7 +6,7 @@ import io.dropwizard.lifecycle.Managed;
 /**
  * This is used for manage the connection to MongoDB.
  *
- * @author Abayomi Popoola
+ * @author Lukman Olalekan
  */
 public class MongoDBManaged implements Managed {
 

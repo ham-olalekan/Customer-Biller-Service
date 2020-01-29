@@ -20,14 +20,9 @@ logging:
 
 mongodbUri: ${MONGODB_URI}
 
-kafka:
-  bootstrapServers:
-    - ${KAFKA_HOST}:${KAFKA_PORT}
-  groupId: wallet-deposit
-
 swagger:
-  basePath: /wallet-deposit-service
-  resourcePackage: ai.kudi.dropwizardkafkastarter.api
+  basePath: /customer-biller-service
+  resourcePackage: com.blocities.customerbiller.api
   scan: true
   info:
     version: "1.0.0"
@@ -38,5 +33,3 @@ swagger:
       name: "Starter App"
     license:
       name: ""
-
-redis: ${REDIS_URI}
